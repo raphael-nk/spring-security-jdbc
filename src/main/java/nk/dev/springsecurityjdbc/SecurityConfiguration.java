@@ -20,6 +20,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.jdbcAuthentication()
                 .dataSource(dataSource);
+                /*  If you'd like to use a specific name
+                    Chain this default method after dataSource()
+                    .usersByUsernameQuery("select username, password, enabled from users where username = ?")
+                    .authoritiesByUsernameQuery("select username, authority from authorities where username = ?")
+                * */
     }
 
     @Override
